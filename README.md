@@ -1,4 +1,4 @@
-# Astro Keystatic Config Generator
+# Astro Content Collections To KeyStatic (CC2KS)
 
 ## Overview
 
@@ -6,16 +6,16 @@ Astro Keystatic Config Generator is an Astro integration that automatically gene
 
 ## Features
 
-- Automatically generates a Keystatic configuration file based on your Astro content collections
+- Automatically generates a Keystatic configuration file based on your Astro content collections 
 - Creates a default content collection configuration if one doesn't exist
-- Watches for changes in your content configuration and updates the Keystatic config accordingly
+- Watches for changes in your content configuration and updates the Keystatic config accordingly on each build
 - Provides detailed logging for easy debugging
 
 ## Installation
 
 To install the Astro Keystatic Config Generator, run the following command in your Astro project directory:
 
-npm install astro-keystatic-config-generator
+npm install astro-cc2ks
 
 ## Usage
 
@@ -37,11 +37,11 @@ The plugin will automatically generate two files in your project root:
 - `keystatic.generated.ts`: Contains the generated Keystatic collections based on your Astro content collections.
 - `keystatic.config.ts`: A default Keystatic configuration file that imports and uses the generated collections.
 
-3. (Optional) Customize your `keystatic.config.ts` file to add any additional Keystatic-specific configurations.
+3. (Optional) Customize your `keystatic.config.ts` file to add any additional Keystatic-specific configurations. See [KeyStatic Configuration](https://keystatic.com/docs/configuration)
 
 ## Configuration
 
-Currently, the plugin works out of the box without any additional configuration. Future versions may include customizable options.
+Currently, the plugin works out of the box without any additional configuration. Future versions may include customizable options. Please add your requests to [Issues](https://github.com/gxjansen/Astro-CC2KS/issues).
 
 ## How It Works
 
