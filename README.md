@@ -20,18 +20,25 @@ npm install astro-cc2ks
 ## Usage
 
 1. Add the integration to your `astro.config.mjs`:
-
+```
 import { defineConfig } from 'astro/config';
-import { astroCC2KS } from 'astro-cc2ks';
 
+import react from "@astrojs/react";
+import markdoc from "@astrojs/markdoc";
+import keystatic from '@keystatic/astro'
+**import { astroCC2KS } from 'astro-cc2ks';**
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [astroCC2KS()],
+  integrations: [react(), markdoc(), keystatic(), **astroCC2KS()**],
+  output: 'hybrid',
 });
+```
 
 2. Run your Astro build process:
-
+```
 npm run build
-
+```
 The plugin will automatically generate two files in your project root:
 
 - `keystatic.generated.ts`: Contains the generated Keystatic collections based on your Astro content collections.

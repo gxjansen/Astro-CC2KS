@@ -1,6 +1,6 @@
 {
   "name": "astro-cc2ks",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Astro plugin to generate Keystatic config from content collections",
   "type": "module",
   "exports": {
@@ -16,6 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "astro",
     "astro-component",
     "astro-integration",
     "withastro",
@@ -28,7 +29,8 @@
     "astro": "^4.0.0"
   },
   "dependencies": {
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "@types/node": "^14.14.31"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
@@ -36,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gxjansen/astro-cc2ks.git"
+    "url": "git+https://github.com/gxjansen/Astro-CC2KS.git"
   },
   "bugs": {
-    "url": "https://github.com/gxjansen/astro-cc2ks/issues"
+    "url": "https://github.com/gxjansen/Astro-CC2KS/issues"
   },
-  "homepage": "https://github.com/gxjansen/astro-cc2ks#readme"
+  "homepage": "https://github.com/gxjansen/Astro-CC2KS/"
 }

@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 # VSCode setting folder
 .vscode/
+
+.npmignore
