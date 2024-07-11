@@ -14,9 +14,9 @@ Astro Keystatic Config Generator is an Astro integration that automatically gene
 ## Installation
 
 To install the Astro Keystatic Config Generator, run the following command in your Astro project directory:
-
+```
 npm install astro-cc2ks
-
+```
 ## Usage
 
 1. Add the integration to your `astro.config.mjs`:
