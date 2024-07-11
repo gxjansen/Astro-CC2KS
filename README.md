@@ -61,6 +61,8 @@ Currently, the plugin works out of the box without any additional configuration.
 4. If a `keystatic.config.ts` file doesn't exist, the plugin creates a default one that imports the generated collections.
 
 ## Structure
+```md
+
 /
 ├── astro-cc2ks.ts         # Main entry point, exports the plugin
 ├── src/
@@ -70,6 +72,7 @@ Currently, the plugin works out of the box without any additional configuration.
 ├── package.json
 ├── README.md
 └── tsconfig.json
+```
 
 ## Troubleshooting
 
