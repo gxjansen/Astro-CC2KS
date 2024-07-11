@@ -2,7 +2,7 @@
 
 ## Overview
 
-Astro CC2KS is an Astro integration that automatically generates a Keystatic configuration based on your Astro content collections. This plugin simplifies the process of setting up Keystatic with Astro by creating and maintaining the necessary configuration files.
+**Astro CC2KS** is an Astro integration that automatically generates a Keystatic configuration based on your Astro content collections. This plugin simplifies the process of setting up Keystatic with Astro by creating and maintaining the necessary configuration files.
 
 ## Features
 
@@ -14,13 +14,15 @@ Astro CC2KS is an Astro integration that automatically generates a Keystatic con
 ## Installation
 
 To install the Astro Keystatic Config Generator, run the following command in your Astro project directory:
-```
-npm i astro-cc2ks
-```
+
+`npm i astro-cc2ks`
 
 This assumes that you... 
-* already have your Astro Keystatic integration setup. If not, [do that first](https://docs.astro.build/en/guides/cms/keystatic/).
-* already have an SSR Adapter installed like Vercel or Netlify. This is needed to run Astro in Hybrid or SSR mode which is required for KeyStatic. [If not, do that first](https://docs.astro.build/en/guides/integrations-guide/).
+* ... already have your Astro Keystatic integration setup. If not, [do that first](https://docs.astro.build/en/guides/cms/keystatic/):
+  * `npm install @keystatic/core @keystatic/astro`
+  * `npx astro add react markdoc`
+* ... already have an SSR Adapter installed like Vercel or Netlify. This is needed to run Astro in Hybrid or SSR mode which is required for KeyStatic. [If not, do that first](https://docs.astro.build/en/guides/integrations-guide/):
+  * `npx astro add netlify`
 
 ## Usage
 
@@ -60,9 +62,9 @@ export default config({
 ```
 
 2. Run your Astro build process:
-```
-npm run build
-```
+
+`npm run build`
+
 The plugin will automatically generate two files in your project root:
 
 - `keystatic.generated.ts`: Contains the generated Keystatic collections based on your Astro content collections.
@@ -83,13 +85,12 @@ Currently, the plugin works out of the box without any additional configuration.
 
 ## Structure
 ```md
-
 /
 ├── astro-cc2ks.ts         # Main entry point, exports the plugin
 ├── src/
 │   └── astro-cc2ks/       # Plugin-specific subfolder
-│       ├── cc2ks-Parser.ts         # Parses Astro content collection configurations and extracts schema information.
-│       └── cc2ks-Transformer.ts    # Transforms the parsed Astro content collection schemas into Keystatic-compatible configuration objects.
+│       ├── cc2ks-Parser.ts         # Parses Astro CC config.
+│       └── cc2ks-Transformer.ts    # Transforms parsed schemas into Keystatic config
 ├── package.json
 ├── README.md
 └── tsconfig.json
