@@ -10,7 +10,7 @@ export function astroCC2KS(): AstroIntegration {
     name: 'astro-cc2ks',
     hooks: {
       'astro:config:setup': async ({ updateConfig, config, logger }) => {
-        logger.info('Astro Content Collection To Keystatic plugin initialized');
+        logger.info('Astro Content Collection To KeyStatic plugin initialized');
 
         const contentConfigPath = new URL('./src/content/config.ts', config.root).pathname;
         const keystaticConfigPath = new URL('./keystatic.config.ts', config.root).pathname;
@@ -35,21 +35,21 @@ export function astroCC2KS(): AstroIntegration {
             try {
               contentConfig = parseContentConfig(contentConfigPath);
               logger.info('Content config parsed successfully.');
-            } catch (parseError) {
-              logger.error(`Error parsing content config: ${parseError instanceof Error ? parseError.message : String(parseError)}`);
-              if (parseError instanceof Error && parseError.stack) {
-                logger.error(`Stack trace: ${parseError.stack}`);
+            } catch (error) {
+              logger.error(`Error parsing content config: ${error instanceof Error ? error.message : String(error)}`);
+              if (error instanceof Error && error.stack) {
+                logger.error(`Stack trace: ${error.stack}`);
               }
               return; // Exit the function if parsing fails
             }
 
             logger.info('Transforming to Keystatic config...');
+            logger.info(`Content config before transformation: ${JSON.stringify(contentConfig, null, 2)}`);
             const keystaticConfig = transformToKeystaticConfig(contentConfig);
             logger.info('Keystatic config transformation complete.');
+            logger.info(`Generated Keystatic config: ${keystaticConfig}`);
 
-            logger.info(`Writing Keystatic config to: ${keystaticGeneratedPath}`);
-            await writeKeystaticConfig(keystaticGeneratedPath, keystaticConfig);
-            logger.info('Keystatic config written successfully.');
+            await writeKeystaticConfig(keystaticGeneratedPath, keystaticConfig, logger);
 
             if (!await fileExists(keystaticConfigPath)) {
               logger.info(`Creating default Keystatic config at: ${keystaticConfigPath}`);
@@ -92,8 +92,18 @@ export function astroCC2KS(): AstroIntegration {
   };
 }
 
-async function writeKeystaticConfig(configPath: string, config: string): Promise<void> {
-  await fs.writeFile(configPath, config, 'utf-8');
+async function writeKeystaticConfig(configPath: string, config: string, logger: any): Promise<void> {
+  try {
+    logger.info(`Writing Keystatic config to: ${configPath}`);
+    logger.info(`Config content: ${config}`);
+    await fs.writeFile(configPath, config, 'utf-8');
+    logger.info('Keystatic config written successfully.');
+  } catch (error) {
+    logger.error(`Error writing Keystatic config: ${error instanceof Error ? error.message : String(error)}`);
+    if (error instanceof Error && error.stack) {
+      logger.error(`Stack trace: ${error.stack}`);
+    }
+  }
 }
 
 async function createDefaultKeystaticConfig(configPath: string): Promise<void> {

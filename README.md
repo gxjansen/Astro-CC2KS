@@ -15,10 +15,12 @@ Astro CC2KS is an Astro integration that automatically generates a Keystatic con
 
 To install the Astro Keystatic Config Generator, run the following command in your Astro project directory:
 ```
-npm install astro-cc2ks
+npm i astro-cc2ks
 ```
 
-This assumes you already have your Astro Keystatic integration setup. If not, [do that first](https://docs.astro.build/en/guides/cms/keystatic/).
+This assumes that you... 
+* already have your Astro Keystatic integration setup. If not, [do that first](https://docs.astro.build/en/guides/cms/keystatic/).
+* already have an SSR Adapter installed like Vercel or Netlify. This is needed to run Astro in Hybrid or SSR mode which is required for KeyStatic. [If not, do that first](https://docs.astro.build/en/guides/integrations-guide/).
 
 ## Usage
 
@@ -28,13 +30,32 @@ import { defineConfig } from 'astro/config';
 
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
-import keystatic from '@keystatic/astro'
+import keystatic from '@keystatic/astro';
+import netlify from "@astrojs/netlify";
 import { astroCC2KS } from 'astro-cc2ks';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic(), astroCC2KS()],
   output: 'hybrid',
+  adapter: netlify()
+});
+```
+
+Replace your keystatic.config.ts with the code below. Only needed when you already created this file, if not it will be created for you.
+```
+import { config } from '@keystatic/core';
+import { generatedCollections } from './keystatic.generated';
+
+export default config({
+  storage: {
+    kind: 'local',
+  },
+  collections: {
+    ...generatedCollections,
+    // Add any additional collections or overrides here
+  },
+  // Add any other Keystatic-specific configurations here
 });
 ```
 
