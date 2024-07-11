@@ -2,7 +2,7 @@
 
 ## Overview
 
-Astro Keystatic Config Generator is an Astro integration that automatically generates a Keystatic configuration based on your Astro content collections. This plugin simplifies the process of setting up Keystatic with Astro by creating and maintaining the necessary configuration files.
+Astro CC2KS is an Astro integration that automatically generates a Keystatic configuration based on your Astro content collections. This plugin simplifies the process of setting up Keystatic with Astro by creating and maintaining the necessary configuration files.
 
 ## Features
 
@@ -17,6 +17,9 @@ To install the Astro Keystatic Config Generator, run the following command in yo
 ```
 npm install astro-cc2ks
 ```
+
+This assumes you already have your Astro Keystatic integration setup. If not, [do that first](https://docs.astro.build/en/guides/cms/keystatic/).
+
 ## Usage
 
 1. Add the integration to your `astro.config.mjs`:
@@ -26,11 +29,11 @@ import { defineConfig } from 'astro/config';
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
 import keystatic from '@keystatic/astro'
-**import { astroCC2KS } from 'astro-cc2ks';**
+import { astroCC2KS } from 'astro-cc2ks';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), markdoc(), keystatic(), **astroCC2KS()**],
+  integrations: [react(), markdoc(), keystatic(), astroCC2KS()],
   output: 'hybrid',
 });
 ```
